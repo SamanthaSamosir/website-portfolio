@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png"></link>
         <link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png"></link>
         <link rel="manifest" href="public/site.webmanifest"></link>
-        <title>Home</title>
+        <title>Home | Samantha Samosir</title>
       </head>
       <body className="flex bg-black-100 text-black">
         <Sidebar />
