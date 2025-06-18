@@ -1,6 +1,7 @@
 import Sidebar from "@/components/sidebar";
 import "./globals.css";
 
+
 export const metadata = {
   title: "Home",
   description: "YouTube-like Sidebar in Next.js",

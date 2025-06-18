@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Tooltip from "@/components/Tooltip";
 import {
     CircleHelp,
     MessageCircleQuestion,
@@ -37,22 +38,27 @@ export default function Sidebar() {
   
   return (
     <> 
-      
-      {/* Toggle Button */}
-      <button
-        className="fixed top-4 left-4 z-50 flex items-center gap-3 bg-background p-2 rounded text-black"
-        onClick={() => {
-          if (window.innerWidth < 1024) {
-            setMobileOpen(!mobileOpen);
-          } else {
-            setCollapsed(!collapsed);
-          }
-        }}
-        aria-label="Toggle sidebar"
-      >
-        <Menu />
-        <img title="Samantha Samosir" src="/Logo.png" alt="Logo" width={100} h-auto="true" />
-      </button>
+      <div className="fixed top-4 left-4 z-50 flex items-center gap-3">
+        {/* Sidebar toggle button */}
+        <button
+          className="flex items-center bg-background p-2 rounded text-black"
+          onClick={() => {
+            if (window.innerWidth < 1024) {
+              setMobileOpen(!mobileOpen);
+            } else {
+              setCollapsed(!collapsed);
+            }
+          }}
+          aria-label="Toggle sidebar"
+        >
+          <Menu />
+        </button>
+
+        {/* Logo as link to homepage */}
+        <Link href="/" title="Samantha Samosir">
+          <img src="/Logo.png" alt="Logo" width={100} className="h-auto cursor-pointer" />
+        </Link>
+      </div>
       {/* Sidebar */}
       <aside
         className={`
@@ -66,20 +72,37 @@ export default function Sidebar() {
         {/* Primary Links */}
 
         <nav className="space-y-2 text-black">
-          <SidebarItem icon={<Home />} label="Home" collapsed={collapsed} active={activeItem === "Home"} onClick={() => setActiveItem("Home")}/>
+          <Tooltip text="Home">
+            <SidebarItem icon={<Home />} label="Home" collapsed={collapsed} active={activeItem === "Home"} onClick={() => setActiveItem("Home")}/>
+          </Tooltip>
           {/* <SidebarItem icon={<Users />} label="About" collapsed={collapsed} active={activeItem === "About"} onClick={() => setActiveItem("About")}/> */}
-          <SidebarItem icon={<GalleryHorizontalEnd />} label="Works" collapsed={collapsed} active={activeItem === "Works"} onClick={() => setActiveItem("Works")}/>
-          <SidebarItem icon={<BriefcaseBusiness />} label="Services"  collapsed={collapsed} active={activeItem === "Shorts"} onClick={() => setActiveItem("Shorts")}/>
-          <SidebarItem icon={<Headset />} label="Contact"  collapsed={collapsed}/>
-          <SidebarItem icon={<ShoppingCart />} label="Store"  collapsed={collapsed}/>
+          <Tooltip text="Works">
+            <SidebarItem icon={<GalleryHorizontalEnd />} label="Works" collapsed={collapsed} active={activeItem === "Works"} onClick={() => setActiveItem("Works")}/>          
+          </Tooltip>
+          <Tooltip text="Services">
+            <SidebarItem icon={<BriefcaseBusiness />} label="Services"  collapsed={collapsed} active={activeItem === "Shorts"} onClick={() => setActiveItem("Shorts")}/>
+          </Tooltip>
+          <Tooltip text="Contact">
+            <SidebarItem icon={<Headset />} label="Contact" collapsed={collapsed}/>
+          </Tooltip>
+          <Tooltip text="Store">
+            <SidebarItem icon={<ShoppingCart />} label="Store"  collapsed={collapsed}/>
+          </Tooltip>
         </nav>
 
         <hr className="my-4 border-gray-300" />
 
         <nav className="space-y-2">
-            <SidebarItem icon={<Library />} label="Free Sources"  collapsed={collapsed}/>
-            <SidebarItem icon={<CircleUser />} label="Testimonials"  collapsed={collapsed}/>
-            <SidebarItem icon={<CircleHelp />} label="FAQ"  collapsed={collapsed}/>
+            <Tooltip text="Library">
+              <SidebarItem icon={<Library />} label="Free Sources"  collapsed={collapsed}/>
+            </Tooltip>
+            <Tooltip text="Testimonials">
+              <SidebarItem icon={<CircleUser />} label="Testimonials"  collapsed={collapsed}/>
+            </Tooltip>
+            <Tooltip text="FAQ">
+              <SidebarItem icon={<CircleHelp />} label="FAQ"  collapsed={collapsed}/>
+            </Tooltip>
+            
             {/* <SidebarItem icon={<ThumbsUp />} label="Liked videos"  collapsed={collapsed}/>
             <SidebarItem icon={<Download />} label="Downloads"  collapsed={collapsed}/> */}
         </nav>
