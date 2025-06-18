@@ -71,7 +71,7 @@ export default function Tooltip({ children, text, delay = 500 }: TooltipProps) {
             left: `${coords.x+5}px`,
             transform: "translateX(10%)",
             backgroundColor: "black",
-            color: "	rgb(200,200,200)",
+            color: "rgb(200,200,200)",
             fontSize: "12px",
             padding: "4px 8px",
             //borderRadius: "2px",
