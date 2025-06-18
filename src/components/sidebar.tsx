@@ -67,7 +67,7 @@ export default function Sidebar() {
 
         <nav className="space-y-2 text-black">
           <SidebarItem icon={<Home />} label="Home" collapsed={collapsed} active={activeItem === "Home"} onClick={() => setActiveItem("Home")}/>
-          <SidebarItem icon={<Users />} label="About" collapsed={collapsed} active={activeItem === "About"} onClick={() => setActiveItem("About")}/>
+          {/* <SidebarItem icon={<Users />} label="About" collapsed={collapsed} active={activeItem === "About"} onClick={() => setActiveItem("About")}/> */}
           <SidebarItem icon={<GalleryHorizontalEnd />} label="Works" collapsed={collapsed} active={activeItem === "Works"} onClick={() => setActiveItem("Works")}/>
           <SidebarItem icon={<BriefcaseBusiness />} label="Services"  collapsed={collapsed} active={activeItem === "Shorts"} onClick={() => setActiveItem("Shorts")}/>
           <SidebarItem icon={<Headset />} label="Contact"  collapsed={collapsed}/>
