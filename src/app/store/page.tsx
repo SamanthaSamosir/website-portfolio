@@ -114,16 +114,13 @@ export default function Store() {
     startIndex + productsPerPage
   );
 
-  const totalPages = Math.ceil(allProducts.length / productsPerPage);
-  const startIndex = (currentPage - 1) * productsPerPage;
-  const currentProducts = allProducts.slice(startIndex, startIndex + productsPerPage);
-
   const goToPage = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
     }
   };
-
+  
+  // Generate nomor halaman untuk pagination
   const getPageNumbers = () => {
     const pages = [];
     for (let i = 1; i <= totalPages; i++) {
@@ -140,9 +137,8 @@ export default function Store() {
             Login
           </button>
         </div>
-        <h1 className="font-medium text-4xl text-black">STORE</h1>
         <div className="mt-2 flex justify-between">
-          <button className="px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-2 text-black border border-black">
+          <button className="px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-7 text-black border border-black">
             Filter
             <ChevronDown className="w-4 h-4" />
           </button>
