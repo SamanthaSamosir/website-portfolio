@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
     CircleHelp,
     MessageCircleQuestion,
@@ -31,9 +32,11 @@ import {
 export default function Sidebar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
+  const router = useRouter();
 
   const sidebarWidth = collapsed ? "w-20" : "w-64";
   const [activeItem, setActiveItem] = useState("Home");
+
   
   return (
     <> 
@@ -66,12 +69,12 @@ export default function Sidebar() {
         {/* Primary Links */}
 
         <nav className="space-y-2 text-black">
-          <SidebarItem icon={<Home />} label="Home" collapsed={collapsed} active={activeItem === "Home"} onClick={() => setActiveItem("Home")}/>
+          <SidebarItem icon={<Home />} label="Home" collapsed={collapsed} active={activeItem === "Home"} onClick={() => {setActiveItem("Home"); router.push("/");}}/>
           {/* <SidebarItem icon={<Users />} label="About" collapsed={collapsed} active={activeItem === "About"} onClick={() => setActiveItem("About")}/> */}
           <SidebarItem icon={<GalleryHorizontalEnd />} label="Works" collapsed={collapsed} active={activeItem === "Works"} onClick={() => setActiveItem("Works")}/>
           <SidebarItem icon={<BriefcaseBusiness />} label="Services"  collapsed={collapsed} active={activeItem === "Shorts"} onClick={() => setActiveItem("Shorts")}/>
           <SidebarItem icon={<Headset />} label="Contact"  collapsed={collapsed}/>
-          <SidebarItem icon={<ShoppingCart />} label="Store"  collapsed={collapsed}/>
+          <SidebarItem icon={<ShoppingCart />} label="Store"  collapsed={collapsed}active={activeItem === "Store"} onClick={() => {setActiveItem("Store") ; router.push("/store");}}/>
         </nav>
 
         <hr className="my-4 border-gray-300" />
@@ -124,6 +127,7 @@ function SidebarItem({
       className={`flex items-center justify-between rounded px-3 py-2 hover:bg-gray-300 cursor-pointer ${
         active ? "bg-gray-100" : "" //active section color
       }`}
+      onClick={onClick}
     >
       <div className="flex items-center gap-3">
         {icon ? (
