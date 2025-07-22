@@ -135,13 +135,7 @@ export default function Store() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8 ">
-        <div className="flex justify-between">
-          <img
-            title="Demo"
-            src="/Logo.png"
-            alt="Logo"
-            className="h-15 w-43 mb-2"
-          />
+        <div className="flex justify-end ">
           <button className="px-3 rounded-md text-sm leading-none font-medium transition-colors flex items-center gap-2 text-black border border-black h-8">
             Login
           </button>
