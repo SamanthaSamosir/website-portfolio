@@ -78,7 +78,6 @@ const allProducts = [
   }
 ];
 
-// Format currency ke USD
 const formatPrice = (price: number) => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -91,22 +90,17 @@ const formatPrice = (price: number) => {
 export default function Store() {
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
-  
-  // Hitung total halaman
+
   const totalPages = Math.ceil(allProducts.length / productsPerPage);
-  
-  // Ambil produk untuk halaman saat ini
   const startIndex = (currentPage - 1) * productsPerPage;
   const currentProducts = allProducts.slice(startIndex, startIndex + productsPerPage);
-  
-  // Fungsi untuk pindah halaman
+
   const goToPage = (page: number) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
     }
   };
-  
-  // Generate nomor halaman untuk pagination
+
   const getPageNumbers = () => {
     const pages = [];
     for (let i = 1; i <= totalPages; i++) {
